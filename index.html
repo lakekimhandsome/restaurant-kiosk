@@ -19,13 +19,15 @@
     <main class="menu-grid" id="menu-grid"></main>
 
     <footer class="order-bar">
-      <div class="order-bar__total">
-        <span class="order-bar__label">총 금액</span>
-        <span class="order-bar__amount" id="total-amount">0원</span>
+      <div class="order-bar__inner">
+        <div class="order-bar__total">
+          <span class="order-bar__label">총 금액</span>
+          <span class="order-bar__amount" id="total-amount">0원</span>
+        </div>
+        <button type="button" class="order-bar__btn" id="order-btn" disabled>
+          주문하기
+        </button>
       </div>
-      <button type="button" class="order-bar__btn" id="order-btn" disabled>
-        주문하기
-      </button>
     </footer>
   </div>
 

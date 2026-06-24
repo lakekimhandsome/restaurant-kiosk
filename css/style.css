@@ -37,7 +37,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  padding: 24px 20px 120px;
+  padding: 24px 16px 140px;
 }
 
 .header {
@@ -59,14 +59,19 @@ body {
 
 .menu-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
   flex: 1;
+  align-items: stretch;
 }
 
 @media (min-width: 640px) {
+  .kiosk {
+    padding: 24px 20px 120px;
+  }
+
   .menu-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 20px;
   }
 }
@@ -74,14 +79,24 @@ body {
 .menu-card {
   background: var(--surface);
   border-radius: var(--radius);
-  padding: 20px 16px;
+  padding: 16px 12px;
   box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  justify-content: flex-start;
+  gap: 8px;
+  width: 100%;
+  min-height: 0;
   border: 2px solid transparent;
   transition: border-color 0.2s;
+}
+
+@media (min-width: 640px) {
+  .menu-card {
+    padding: 20px 16px;
+    gap: 12px;
+  }
 }
 
 .menu-card--active {
@@ -95,9 +110,21 @@ body {
 }
 
 .menu-card__name {
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   font-weight: 600;
   text-align: center;
+  line-height: 1.35;
+  min-height: 2.7em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .menu-card__name {
+    font-size: 1.05rem;
+  }
 }
 
 .menu-card__price {
@@ -107,21 +134,25 @@ body {
 }
 
 .qty-control {
-  display: flex;
+  display: grid;
+  grid-template-columns: 40px 32px 40px;
   align-items: center;
-  gap: 16px;
-  margin-top: 4px;
+  justify-content: center;
+  margin-top: auto;
+  padding-top: 8px;
+  width: 100%;
 }
 
 .qty-control__btn {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border: none;
   border-radius: 50%;
   background: var(--bg);
   color: var(--text);
-  font-size: 1.4rem;
+  font-size: 1.25rem;
   font-weight: 500;
+  line-height: 1;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -129,6 +160,19 @@ body {
   transition: background 0.15s, transform 0.1s;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
+  justify-self: center;
+}
+
+@media (min-width: 640px) {
+  .qty-control {
+    grid-template-columns: 44px 28px 44px;
+  }
+
+  .qty-control__btn {
+    width: 44px;
+    height: 44px;
+    font-size: 1.4rem;
+  }
 }
 
 .qty-control__btn:active {
@@ -154,10 +198,16 @@ body {
 }
 
 .qty-control__count {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 700;
-  min-width: 28px;
   text-align: center;
+  justify-self: center;
+}
+
+@media (min-width: 640px) {
+  .qty-control__count {
+    font-size: 1.25rem;
+  }
 }
 
 .order-bar {
@@ -167,18 +217,44 @@ body {
   right: 0;
   background: var(--surface);
   border-top: 1px solid var(--border);
-  padding: 16px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
   box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.06);
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+.order-bar__inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+}
+
+@media (min-width: 640px) {
+  .order-bar__inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    gap: 16px;
+  }
 }
 
 .order-bar__total {
   display: flex;
-  flex-direction: column;
-  gap: 2px;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+@media (min-width: 640px) {
+  .order-bar__total {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
 }
 
 .order-bar__label {
@@ -187,14 +263,20 @@ body {
 }
 
 .order-bar__amount {
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   font-weight: 700;
   color: var(--accent);
 }
 
+@media (min-width: 640px) {
+  .order-bar__amount {
+    font-size: 1.5rem;
+  }
+}
+
 .order-bar__btn {
-  flex-shrink: 0;
-  padding: 16px 32px;
+  width: 100%;
+  padding: 14px 24px;
   border: none;
   border-radius: 12px;
   background: var(--accent);
@@ -205,6 +287,14 @@ body {
   cursor: pointer;
   transition: background 0.15s, opacity 0.15s;
   -webkit-tap-highlight-color: transparent;
+}
+
+@media (min-width: 640px) {
+  .order-bar__btn {
+    width: auto;
+    flex-shrink: 0;
+    padding: 16px 32px;
+  }
 }
 
 .order-bar__btn:hover:not(:disabled) {
