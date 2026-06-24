@@ -247,6 +247,18 @@ body {
   }
 }
 
+.site-footer {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+.site-footer__copy {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
 .order-bar {
   position: fixed;
   bottom: 0;
