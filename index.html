@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>레스토랑 키오스크</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="kiosk">
+    <header class="header">
+      <h1 class="header__title">주문하기</h1>
+      <p class="header__subtitle">메뉴를 선택하고 수량을 조절해 주세요</p>
+    </header>
+
+    <main class="menu-grid" id="menu-grid"></main>
+
+    <footer class="order-bar">
+      <div class="order-bar__total">
+        <span class="order-bar__label">총 금액</span>
+        <span class="order-bar__amount" id="total-amount">0원</span>
+      </div>
+      <button type="button" class="order-bar__btn" id="order-btn" disabled>
+        주문하기
+      </button>
+    </footer>
+  </div>
+
+  <div class="modal hidden" id="order-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal__backdrop" id="modal-backdrop"></div>
+    <div class="modal__content">
+      <div class="modal__icon" aria-hidden="true">✓</div>
+      <h2 class="modal__title" id="modal-title">주문이 완료되었습니다</h2>
+      <p class="modal__message" id="modal-message"></p>
+      <button type="button" class="modal__btn" id="modal-close">확인</button>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
