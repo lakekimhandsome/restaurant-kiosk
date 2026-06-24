@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>레스토랑 키오스크</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,26 +10,26 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div class="kiosk">
+  <div class="page">
     <header class="header">
       <h1 class="header__title">주문하기</h1>
       <p class="header__subtitle">메뉴를 선택하고 수량을 조절해 주세요</p>
     </header>
 
     <main class="menu-grid" id="menu-grid"></main>
-
-    <footer class="order-bar">
-      <div class="order-bar__inner">
-        <div class="order-bar__total">
-          <span class="order-bar__label">총 금액</span>
-          <span class="order-bar__amount" id="total-amount">0원</span>
-        </div>
-        <button type="button" class="order-bar__btn" id="order-btn" disabled>
-          주문하기
-        </button>
-      </div>
-    </footer>
   </div>
+
+  <footer class="order-bar">
+    <div class="order-bar__inner">
+      <div class="order-bar__total">
+        <span class="order-bar__label">총 금액</span>
+        <span class="order-bar__amount" id="total-amount">0원</span>
+      </div>
+      <button type="button" class="order-bar__btn" id="order-btn" disabled>
+        주문하기
+      </button>
+    </div>
+  </footer>
 
   <div class="modal hidden" id="order-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <div class="modal__backdrop" id="modal-backdrop"></div>

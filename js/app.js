@@ -55,9 +55,19 @@ function renderMenu() {
         <h2 class="menu-card__name">${item.name}</h2>
         <p class="menu-card__price">${formatPrice(item.price)}</p>
         <div class="qty-control">
-          <button type="button" class="qty-control__btn" data-action="minus" aria-label="${item.name} 수량 줄이기">−</button>
-          <span class="qty-control__count" aria-live="polite">0</span>
-          <button type="button" class="qty-control__btn qty-control__btn--plus" data-action="plus" aria-label="${item.name} 수량 늘리기">+</button>
+          <div class="qty-control__slot">
+            <button type="button" class="qty-control__btn qty-control__btn--minus" data-action="minus" aria-label="${item.name} 수량 줄이기">
+              <span class="qty-icon qty-icon--minus" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="qty-control__slot">
+            <span class="qty-control__count" aria-live="polite">0</span>
+          </div>
+          <div class="qty-control__slot">
+            <button type="button" class="qty-control__btn qty-control__btn--plus" data-action="plus" aria-label="${item.name} 수량 늘리기">
+              <span class="qty-icon qty-icon--plus" aria-hidden="true"></span>
+            </button>
+          </div>
         </div>
       </article>
     `
