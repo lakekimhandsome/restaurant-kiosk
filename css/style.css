@@ -259,6 +259,16 @@ body {
   color: var(--text-muted);
 }
 
+.site-footer__copy a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.site-footer__copy a:hover {
+  color: var(--accent);
+}
+
 .order-bar {
   position: fixed;
   bottom: 0;
