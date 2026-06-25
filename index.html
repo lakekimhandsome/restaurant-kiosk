@@ -11,10 +11,71 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <div class="welcome" id="welcome-screen">
+    <div class="welcome__inner">
+      <h1 class="welcome__title">주문 방법을 선택해 주세요</h1>
+      <p class="welcome__subtitle">Please select your order type</p>
+      <div class="welcome__choices">
+        <button type="button" class="welcome-choice" data-type="dine-in">
+          <span class="welcome-choice__label">먹고 가기</span>
+          <span class="welcome-choice__sub">For here</span>
+        </button>
+        <button type="button" class="welcome-choice" data-type="takeout">
+          <span class="welcome-choice__label">포장하기</span>
+          <span class="welcome-choice__sub">To go</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="welcome" id="payment-screen" hidden>
+    <div class="welcome__inner">
+      <h1 class="welcome__title">결제 수단을 선택해 주세요</h1>
+      <p class="welcome__subtitle">Please select a payment method</p>
+      <div class="welcome__choices">
+        <button type="button" class="welcome-choice" data-payment="card">
+          <span class="welcome-choice__label">신용·체크카드</span>
+          <span class="welcome-choice__sub">Credit · Debit card</span>
+        </button>
+        <button type="button" class="welcome-choice" data-payment="mobile">
+          <span class="welcome-choice__label">모바일 결제</span>
+          <span class="welcome-choice__sub">Mobile pay</span>
+        </button>
+      </div>
+      <button type="button" class="step-back" id="payment-back">Back</button>
+    </div>
+  </div>
+
+  <div class="welcome" id="receipt-screen" hidden>
+    <div class="welcome__inner">
+      <h1 class="welcome__title">영수증 옵션을 선택해 주세요</h1>
+      <p class="welcome__subtitle">Please select a receipt option</p>
+      <div class="welcome__choices">
+        <button type="button" class="welcome-choice" data-receipt="print">
+          <span class="welcome-choice__label">영수증 출력</span>
+          <span class="welcome-choice__sub">Print receipt</span>
+        </button>
+        <button type="button" class="welcome-choice" data-receipt="number">
+          <span class="welcome-choice__label">주문 번호만 받기</span>
+          <span class="welcome-choice__sub">Order number only</span>
+        </button>
+      </div>
+      <button type="button" class="step-back" id="receipt-back">Back</button>
+    </div>
+  </div>
+
+  <div class="app" id="app" hidden>
   <div class="page">
     <header class="header">
+      <button type="button" class="header__home" id="home-btn" aria-label="처음으로">
+        <svg class="header__home-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 10.5L12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-9.5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <p class="header__badge" id="order-type-badge"></p>
       <h1 class="header__title">주문하기</h1>
-      <p class="header__subtitle">메뉴를 선택하고 수량을 조절해 주세요</p>
+      <p class="header__desc">메뉴를 선택하고 수량을 조절해 주세요</p>
+      <p class="header__desc-sub">Select items and adjust quantities</p>
     </header>
 
     <main class="menu-grid" id="menu-grid"></main>
@@ -26,23 +87,46 @@
 
   <footer class="order-bar">
     <div class="order-bar__inner">
-      <div class="order-bar__total">
-        <span class="order-bar__label">총 금액</span>
-        <span class="order-bar__amount" id="total-amount">0원</span>
+      <div class="order-bar__summary is-empty" id="order-summary" aria-live="polite">
+        <p class="order-bar__summary-label">선택 메뉴</p>
+        <ul class="order-bar__list" id="order-list"></ul>
       </div>
-      <button type="button" class="order-bar__btn" id="order-btn" disabled>
-        주문하기
-      </button>
+      <div class="order-bar__checkout">
+        <div class="order-bar__total">
+          <span class="order-bar__label">Total</span>
+          <span class="order-bar__amount" id="total-amount">0원</span>
+        </div>
+        <button type="button" class="order-bar__btn" id="order-btn" disabled>주문하기</button>
+      </div>
     </div>
   </footer>
+
+  <div class="idle-timer" id="idle-timer" hidden aria-hidden="true">
+    <div class="idle-timer__circle">
+      <svg class="idle-timer__svg" viewBox="0 0 100 100" aria-hidden="true">
+        <circle class="idle-timer__track" cx="50" cy="50" r="42" fill="none" stroke-width="5"/>
+        <circle class="idle-timer__progress" id="idle-timer-progress" cx="50" cy="50" r="42" fill="none" stroke-width="5" stroke-linecap="round"/>
+      </svg>
+      <span class="idle-timer__value" id="idle-timer-value">100</span>
+    </div>
+  </div>
+  </div>
 
   <div class="modal hidden" id="order-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <div class="modal__backdrop" id="modal-backdrop"></div>
     <div class="modal__content">
       <div class="modal__icon" aria-hidden="true">✓</div>
-      <h2 class="modal__title" id="modal-title">주문이 완료되었습니다</h2>
+      <h2 class="modal__title" id="modal-title">결제가 완료되었습니다</h2>
+      <p class="modal__order-label">
+        <span class="label-ko">주문 번호</span>
+        <span class="label-en">Order number</span>
+      </p>
+      <p class="modal__order-number" id="modal-order-number">001</p>
       <p class="modal__message" id="modal-message"></p>
-      <button type="button" class="modal__btn" id="modal-close">확인</button>
+      <button type="button" class="modal__btn" id="modal-close">
+        <span class="modal__btn-label">확인</span>
+        <span class="modal__btn-count" id="modal-countdown">5</span>
+      </button>
     </div>
   </div>
 
