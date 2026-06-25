@@ -102,12 +102,12 @@ body {
 }
 
 .welcome-choice__label {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 700;
 }
 
 .welcome-choice__sub {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: var(--text-muted);
 }
 
@@ -130,7 +130,11 @@ body {
   }
 
   .welcome-choice__label {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
+  }
+
+  .welcome-choice__sub {
+    font-size: 0.85rem;
   }
 }
 
@@ -696,10 +700,9 @@ body {
 }
 
 .idle-timer {
-  position: fixed;
-  top: calc(16px + env(safe-area-inset-top, 0px));
-  right: var(--page-x);
-  z-index: 50;
+  position: absolute;
+  top: 0;
+  right: 0;
   pointer-events: none;
 }
 

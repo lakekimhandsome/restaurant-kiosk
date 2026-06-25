@@ -72,6 +72,15 @@
           <path d="M4 10.5L12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-9.5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
         </svg>
       </button>
+      <div class="idle-timer" id="idle-timer" hidden aria-hidden="true">
+        <div class="idle-timer__circle">
+          <svg class="idle-timer__svg" viewBox="0 0 100 100" aria-hidden="true">
+            <circle class="idle-timer__track" cx="50" cy="50" r="42" fill="none" stroke-width="5"/>
+            <circle class="idle-timer__progress" id="idle-timer-progress" cx="50" cy="50" r="42" fill="none" stroke-width="5" stroke-linecap="round"/>
+          </svg>
+          <span class="idle-timer__value" id="idle-timer-value">100</span>
+        </div>
+      </div>
       <p class="header__badge" id="order-type-badge"></p>
       <h1 class="header__title">주문하기</h1>
       <p class="header__desc">메뉴를 선택하고 수량을 조절해 주세요</p>
@@ -100,16 +109,6 @@
       </div>
     </div>
   </footer>
-
-  <div class="idle-timer" id="idle-timer" hidden aria-hidden="true">
-    <div class="idle-timer__circle">
-      <svg class="idle-timer__svg" viewBox="0 0 100 100" aria-hidden="true">
-        <circle class="idle-timer__track" cx="50" cy="50" r="42" fill="none" stroke-width="5"/>
-        <circle class="idle-timer__progress" id="idle-timer-progress" cx="50" cy="50" r="42" fill="none" stroke-width="5" stroke-linecap="round"/>
-      </svg>
-      <span class="idle-timer__value" id="idle-timer-value">100</span>
-    </div>
-  </div>
   </div>
 
   <div class="modal hidden" id="order-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
